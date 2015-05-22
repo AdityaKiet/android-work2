@@ -1,0 +1,70 @@
+package com.ntes.faculty.btech;
+
+import java.io.File;
+import java.io.FilenameFilter;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.os.Bundle;
+import android.os.Environment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
+import com.ntes.uptuquestionbank.R;
+
+public class NotesUploadActivity extends Activity implements OnClickListener{
+
+	private String branch;
+	private EditText etTitle, etNotes;
+	private Button btnSubmit;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.post_notes);
+		branch = getIntent().getExtras().getString("branch");
+		populate();
+	}
+
+	private void populate() {
+		etNotes = (EditText)findViewById(R.id.etTxtFile);
+		etTitle = (EditText)findViewById(R.id.etTitle);
+		btnSubmit = (Button)findViewById(R.id.btnPostNotes);
+		etNotes.setOnClickListener(this);
+		btnSubmit.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		if(v.getId() == R.id.etTxtFile){
+			File files[] = Environment.getExternalStorageDirectory().listFiles( new FilenameFilter() {
+						public boolean accept(File dir, String filename) {
+								return ((filename.endsWith(".txt")));
+						}
+					});
+			String[] fileNames = new String[files.length];
+			String[] filePaths = new String[files.length];
+			
+			for(int i = 0; i < files.length ; i++){
+				fileNames[i] = files[i].getName();
+				filePaths[i] = files[i].getAbsolutePath();
+			}
+			ListView listView = new ListView(NotesUploadActivity.this);
+			ListAdapter adapter = new ArrayAdapter(NotesUploadActivity.this, android.R.layout.simple_list_item_1, fileNames);
+			listView.setAdapter(adapter);
+			AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+			builder.setView(listView);
+			builder.setTitle("Select a File")
+			builder.show();
+		}else if (v.getId() == R.id.btnPostNotes){
+			
+		}
+	}
+
+}

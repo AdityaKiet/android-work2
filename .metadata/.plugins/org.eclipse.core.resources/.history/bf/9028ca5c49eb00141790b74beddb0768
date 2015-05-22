@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_aboutus"
+        android:title="About Us"/>
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"/>
+
+</menu>
+-->
+<!-- <menu xmlns:android="http://schemas.android.com/apk/res/android"></menu> -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:title="Menu"
+        android:icon="@drawable/abs__ic_menu_moreoverflow_normal_holo_dark"
+        android:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/action_aboutus"
+                android:title="About Us"/>
+            <item
+                android:id="@+id/logout"
+                android:title="Logout"/>
+        </menu>
+    </item>
+
+</menu>

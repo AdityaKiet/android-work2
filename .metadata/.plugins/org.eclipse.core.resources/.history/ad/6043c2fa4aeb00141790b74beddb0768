@@ -1,0 +1,7 @@
+import android.app.Activity;
+
+package com.ntes.discussionforum;
+
+public class MainActivity extends Activity{
+
+}

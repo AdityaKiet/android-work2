@@ -1,0 +1,244 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ntes.uptuquestionbank"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.ntes.splash.Splash"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.MainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.student.RegisterActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.student.RegisterActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.student.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.student.MainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.student.LoginActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.student.LoginActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.student.btech.BranchActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.student.btech.BranchActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+         <activity
+            android:name="com.ntes.student.mtech.BranchActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.student.mtech.BranchActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.faculty.RegisterActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.faculty.RegisterActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.faculty.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.faculty.MainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.faculty.LoginActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.faculty.LoginActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.faculty.btech.BranchActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.faculty.btech.BranchActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.faculty.btech.NotesUploadActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.faculty.btech.NotesUploadActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.faculty.mtech.BranchActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.faculty.mtech.BranchActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.faculty.mtech.NotesUploadActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.faculty.mtech.NotesUploadActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.student.btech.NotesActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.student.btech.NotesActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.student.btech.NotesDisplay"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.student.btech.NotesDisplay" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.student.mtech.NotesActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.student.mtech.NotesActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.student.mtech.NotesDisplay"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.student.mtech.NotesDisplay" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.faculty.mba.NotesUploadActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.faculty.mba.NotesUploadActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.faculty.mca.NotesUploadActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.faculty.mca.NotesUploadActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.faculty.bpharm.NotesUploadActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.faculty.bpharm.NotesUploadActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.faculty.mpharm.NotesUploadActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.faculty.mpharm.NotesUploadActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.student.mba.NotesActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.student.mba.NotesActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.discussionforum.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.discussionforum.MainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ntes.discussionforum.AllQuestionActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.ntes.discussionforum.AllQuestionActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

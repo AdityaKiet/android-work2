@@ -1,0 +1,28 @@
+package com.ntes.student.btech;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.ntes.dto.NotesDTO;
+import com.ntes.uptuquestionbank.R;
+
+public class NotesDisplay extends Activity {
+	private TextView txtTitle, txtNotes;
+	private String json;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		json = getIntent().getExtras().getString("json");
+		Gson gson = new Gson();
+		NotesDTO notesDTO = gson.fromJson(json, NotesDTO.class);
+		setContentView(R.layout.notes_display);
+		txtNotes = (TextView) findViewById(R.id.txtNotes);
+		txtTitle = (TextView) findViewById(R.id.txtTitle);
+		txtNotes.setText(notesDTO.getNotes());
+		txtTitle.setText(notesDTO.getTitle());
+	}
+
+}

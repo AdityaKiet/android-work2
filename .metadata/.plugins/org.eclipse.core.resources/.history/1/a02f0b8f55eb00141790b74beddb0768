@@ -1,0 +1,154 @@
+package com.ntes.discussionforum;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.ntes.uptuquestionbank.R;
+
+public class ExploreQuestion extends Activity{
+	private int position;
+	private TextView txtExploreQuestionContent;
+	private EditText etAnswer;
+	private Button btnSubmit;
+	private LinearLayout layout;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.explore_question);
+		position = getIntent().getExtras().getInt("position");
+		txtExploreQuestionContent = (TextView)findViewById(R.id.txtExploreQuestionContent);
+		etAnswer = (EditText)findViewById(R.id.etPostAnswer);
+		btnSubmit = (Button)findViewById(R.id.btnPostAnswer);
+		layout = (LinearLayout)findViewById(R.id.linearAnswers);
+		btnSubmit.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				
+			}
+		});
+	}
+	
+	
+	private class PostAnswerAsynTask extends AsyncTask<String, String, Void> {
+		private Context context;
+		private InputStream is;
+		private HttpEntity entity;
+		private String result = "";	
+		private String ip,sql;
+		private ProgressDialog progressDialog;
+		
+		public PostAnswerAsynTask(final Context context, String answer) {
+			this.context = context;
+			sql = "insert into discussion_forum_answers(id,answer) values ('" + answer + "');";
+			ResourceBundle rb = ResourceBundle.getBundle("network");
+			ip = rb.getString("ip");
+			TimerTask task = new TimerTask() {
+				public void run() {
+					progressDialog.dismiss();
+					this.cancel();
+					((Activity)context).runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							if(null != context && PostAnswerAsynTask.this.isCancelled())
+								Toast.makeText(context.getApplicationContext().getApplicationContext(),"Connection failed..", Toast.LENGTH_LONG).show();
+						}
+					});
+				}
+			};
+			
+			Timer timer = new Timer();
+			timer.schedule(task, 15000);
+		}
+
+		@Override
+		protected void onPreExecute() {
+			progressDialog = new ProgressDialog(context);
+			progressDialog.setMessage("Please Wait.....");
+			progressDialog.show();
+			progressDialog.setOnCancelListener(new OnCancelListener() {
+				@Override
+				public void onCancel(DialogInterface arg0) {
+					PostAnswerAsynTask.this.cancel(true);
+				}
+			});
+			super.onPreExecute();
+		}
+
+		@Override
+		protected Void doInBackground(String... params) {
+			List<NameValuePair> list = new ArrayList<NameValuePair>(1);
+			list.add(new BasicNameValuePair("sql", sql));
+			try {
+				HttpClient httpClient = new DefaultHttpClient();
+				HttpPost httpPost = new HttpPost(ip+"/ntes/savedata.php");
+				httpPost.setEntity(new UrlEncodedFormEntity(list));
+				HttpResponse httpResponse = httpClient.execute(httpPost);
+				entity = httpResponse.getEntity();
+				is = entity.getContent();
+				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+				StringBuilder stringBuilder = new StringBuilder();
+				String line = "";
+				while ((line = bufferedReader.readLine()) != null) {
+					stringBuilder.append(line);
+				}
+				is.close();
+				result = stringBuilder.toString();
+			} catch (Exception e) {
+				PostAnswerAsynTask.this.cancel(true);
+				Toast.makeText(context.getApplicationContext().getApplicationContext(),"Exception " + e.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void v) {
+			progressDialog.dismiss();
+			Log.d("log", result);
+		try{
+			if(result.equals("true"))
+					Toast.makeText(context.getApplicationContext(), "Question Submitted", Toast.LENGTH_LONG).show();
+			else
+					Toast.makeText(context.getApplicationContext(), "Question not Submitted", Toast.LENGTH_LONG).show();
+			}
+			catch(Exception e){
+				PostAnswerAsynTask.this.cancel(true);
+				Toast.makeText(context.getApplicationContext().getApplicationContext(),"Exception " + e.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			super.onPostExecute(v);
+		}
+
+
+	}
+
+}

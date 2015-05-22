@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/TableLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1"
+    android:background="@drawable/guidelines" >
+
+    <TableRow android:id="@+id/TableRow01" >
+
+        <TextView
+            android:id="@+id/label_latlng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/latlng" />
+
+        <TextView
+            android:id="@+id/latlng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <TableRow android:id="@+id/TableRow03" >
+
+        <TextView
+            android:id="@+id/label_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/address" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <TableRow android:id="@+id/TableRow04" >
+
+        <TextView
+            android:id="@+id/label_lastup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lastup" />
+
+        <TextView
+            android:id="@+id/lastup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/tts"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:text=""
+        android:visibility="visible" 
+        android:background="@drawable/buttonxml1"/>
+
+    <Button
+        android:id="@+id/btncamera"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:visibility="visible" 
+        android:background="@drawable/buttonxml1"/>
+
+</TableLayout>

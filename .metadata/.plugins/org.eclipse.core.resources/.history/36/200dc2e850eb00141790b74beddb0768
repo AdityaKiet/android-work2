@@ -1,0 +1,23 @@
+package com.ntes.discussionforum;
+
+import com.ntes.GlobalData;
+import com.ntes.uptuquestionbank.R;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ListView;
+
+public class AllQuestionActivity extends Activity {
+	private ListView listView;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.all_questions);
+		listView = (ListView)findViewById(R.id.listQuestions);
+		String[] list = new String[GlobalData.questions.size()];
+		for(int i = 0; i  < GlobalData.questions.size(); i++){
+			list[i] = GlobalData.questions.get(i).getQuestion();
+		}
+	}
+
+}

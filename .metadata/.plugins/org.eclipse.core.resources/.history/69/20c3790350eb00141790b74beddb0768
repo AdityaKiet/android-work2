@@ -1,0 +1,7 @@
+package com.ntes.dto;
+
+public class QuestionDTO {
+	private Integer id;
+	private String question;
+
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+   <struts>
+       
+   <package name="default" extends="struts-default">
+   <action name="welcome" class="com.ducat.actions.FirstAction" >
+   <result name="success">/welcome.jsp</result>
+   
+   </action>
+   <action name="loginAC" class="com.ducat.actions.LoginAction" method="checkLogin">
+       <result name="success">/welcome.jsp</result>
+       <result name="fail">/error.jsp</result>
+   </action>
+   
+   <!-- <action name="customerAddAction" 
+			class="com.ducat.actions.CustomerAction" >
+		    <result name="success">/addCustomer.jsp</result>
+		</action>
+	
+		<action name="customerAction" 
+			class="com.ducat.actions.CustomerAction" >
+		    <result name="success">/success.jsp</result>
+		</action>
+ -->   </package>
+
+   </struts>

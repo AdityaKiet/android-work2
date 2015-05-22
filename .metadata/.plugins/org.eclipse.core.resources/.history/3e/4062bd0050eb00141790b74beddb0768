@@ -1,0 +1,5 @@
+package com.ntes.dto;
+
+public class QuestionDTO {
+
+}

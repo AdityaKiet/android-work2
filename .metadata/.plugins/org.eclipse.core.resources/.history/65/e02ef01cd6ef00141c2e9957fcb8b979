@@ -1,0 +1,82 @@
+package com.ntes.student.btech;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
+import android.widget.ListView;
+
+import com.ntes.GlobalData;
+import com.ntes.dto.NotesDTO;
+import com.ntes.uptuquestionbank.R;
+
+public class NotesActivity extends Activity {
+	private ListView listView;
+	private EditText etInput;
+	private List<NotesDTO> tests;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.notes);
+		listView = (ListView)findViewById(R.id.listNotes);
+		etInput = (EditText)findViewById(R.id.etInputSearch);
+		ListAdapter adapter = new ListAdapter(NotesActivity.this);
+		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Bundle bundle = new Bundle();
+				bundle.putInt("position", position);
+				Intent intent = new Intent("com.ntes.student.btech.NotesDisplay");
+				intent.putExtras(bundle);
+				startActivity(intent);
+			}
+		});
+		
+
+		etInput.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				String text = etInput.getText().toString().toLowerCase(Locale.getDefault());
+				if(text.trim().length() == 0){
+					ListAdapter allTestsAdapter = new ListAdapter(NotesActivity.this);
+					listView.setAdapter(allTestsAdapter);
+					tests = null;
+				}
+				
+				else{
+					tests = new ArrayList<TestDTO>();
+					for(TestDTO testDTO : GlobalData.allTests){
+						if(testDTO.getTestName().toLowerCase(Locale.getDefault()).contains(text))
+							tests.add(testDTO);
+					}
+				AllTestsAdapter allTestsAdapter = new AllTestsAdapter(getActivity(), tests);
+				listView.setAdapter(allTestsAdapter);
+				}
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				
+			}
+		});
+		}	}
+
+}

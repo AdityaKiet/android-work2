@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff" >
+
+    <EditText
+        android:id="@+id/etLeaderBoardInputSearch"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="3dp"
+        android:visibility="gone"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/edittext_top_bg"
+        android:hint="Search Tests" />
+
+    <ListView
+       android:id="@+id/listLeaderBoardTests"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etLeaderBoardInputSearch"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp" >
+    </ListView>
+
+</RelativeLayout>
